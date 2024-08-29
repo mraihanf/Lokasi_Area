@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Office Map</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<h1>Admin - Office Map</h1>
+<div id="map-container">
+    <img src="/images/office-map.svg" alt="Office Map" id="office-map">
+    <div id="selection-area" style="display: none;"></div>
+</div>
+<form id="location-form" th:action="@{/admin/location}" method="post">
+    <input type="hidden" id="location-id" name="id">
+    <input type="hidden" id="x" name="x">
+    <input type="hidden" id="y" name="y">
+    <input type="hidden" id="width" name="width">
+    <input type="hidden" id="height" name="height">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" name="imageUrl" required>
+    <button type="submit">Save Location</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="location : ${locations}">
+        <td th:text="${location.name}"></td>
+        <td th:text="${location.description}"></td>
+        <td>
+            <button th:onclick="'editLocation(' + ${location.id} + ')'">Edit</button>
+            <form th:action="@{/admin/location/{id}/delete(id=${location.id})}" method="post" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin.js}"></script>
+</body>
+</html>

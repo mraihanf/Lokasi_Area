@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Office Map</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<div id="map-container">
+    <img src="/images/office-map.svg" alt="Office Map" id="office-map">
+    <div id="location-markers"></div>
+    <div id="selection-area" style="display: none;"></div>
+</div>
+<div id="location-info" style="display: none;">
+    <h2 id="location-name"></h2>
+    <p id="location-description"></p>
+    <img id="location-image" src="" alt="Location Image">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/map.js}"></script>
+</body>
+</html>
