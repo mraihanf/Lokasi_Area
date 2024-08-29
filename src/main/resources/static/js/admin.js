@@ -7,6 +7,8 @@ $(document).ready(function() {
         const mapOffset = $(this).offset();
         startX = e.pageX - mapOffset.left;
         startY = e.pageY - mapOffset.top;
+
+        // Reset and show the selection area
         $('#selection-area').css({
             left: startX + 'px',
             top: startY + 'px',
@@ -27,6 +29,10 @@ $(document).ready(function() {
         const left = Math.min(startX, currentX);
         const top = Math.min(startY, currentY);
 
+        console.log("Width:", width);
+        console.log("Height:", height);
+
+        // Update selection area dimensions
         $('#selection-area').css({
             left: left + 'px',
             top: top + 'px',
@@ -40,16 +46,29 @@ $(document).ready(function() {
 
         isSelecting = false;
         const area = $('#selection-area');
-        $('#x').val(parseInt(area.css('left')));
-        $('#y').val(parseInt(area.css('top')));
-        $('#width').val(parseInt(area.css('width')));
-        $('#height').val(parseInt(area.css('height')));
+        const x = parseInt(area.css('left'));
+        const y = parseInt(area.css('top'));
+        const width = parseInt(area.css('width'));
+        const height = parseInt(area.css('height'));
+
+        // Log the final values after the selection
+        console.log("Selection Completed:");
+        console.log("X:", x);
+        console.log("Y:", y);
+        console.log("Width:", width);
+        console.log("Height:", height);
+
+        $('#x').val(x);
+        $('#y').val(y);
+        $('#width').val(width);
+        $('#height').val(height);
         area.hide();
     });
 
     $('#location-form').submit(function(e) {
         e.preventDefault();
         var formData = $(this).serialize();
+
         var url = $(this).attr('action');
         if ($('#location-id').val()) {
             url += '/' + $('#location-id').val();
