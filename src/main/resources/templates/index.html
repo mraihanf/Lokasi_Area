@@ -7,17 +7,21 @@
 </head>
 <body>
 <div id="map-container">
-    <img src="/images/office-map.svg" alt="Office Map" id="office-map">
-    <div id="location-markers"></div>
+    <div id="map-content">
+        <img src="/images/office-map.jpg" alt="Office Map" id="office-map">
+        <div id="location-markers"></div>
+    </div>
     <div id="selection-area" style="display: none;"></div>
 </div>
 <div id="location-info" style="display: none;">
+    <button id="close-info">Close</button>
     <h2 id="location-name"></h2>
     <p id="location-description"></p>
     <img id="location-image" src="" alt="Location Image">
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{/js/map.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pointer-events-polyfill/0.0.7/pointer-events-polyfill.min.js"></script>
+<script src="/js/map.js"></script>
 </body>
 </html>

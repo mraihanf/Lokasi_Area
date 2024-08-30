@@ -13,7 +13,8 @@ $(document).ready(function() {
             left: startX + 'px',
             top: startY + 'px',
             width: '0px',
-            height: '0px'
+            height: '0px',
+            border: '1px solid #000' // Tambahkan border untuk membuat area seleksi terlihat
         }).show();
     });
 
@@ -28,9 +29,6 @@ $(document).ready(function() {
         const height = Math.abs(currentY - startY);
         const left = Math.min(startX, currentX);
         const top = Math.min(startY, currentY);
-
-        console.log("Width:", width);
-        console.log("Height:", height);
 
         // Update selection area dimensions
         $('#selection-area').css({
@@ -62,7 +60,9 @@ $(document).ready(function() {
         $('#y').val(y);
         $('#width').val(width);
         $('#height').val(height);
-        area.hide();
+
+        // Uncomment the line below if you want to hide the selection area after form submission
+        // area.hide();
     });
 
     $('#location-form').submit(function(e) {

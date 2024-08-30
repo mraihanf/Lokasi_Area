@@ -8,7 +8,7 @@
 <body>
 <h1>Admin - Office Map</h1>
 <div id="map-container">
-    <img src="/images/office-map.svg" alt="Office Map" id="office-map">
+    <img src="/images/office-map.jpg" alt="Office Map" id="office-map">
     <div id="selection-area" style="display: none;"></div>
 </div>
 <form id="location-form" th:action="@{/admin/location}" method="post">
@@ -38,7 +38,7 @@
         <td th:text="${location.name}"></td>
         <td th:text="${location.description}"></td>
         <td>
-            <button th:onclick="'editLocation(' + ${location.id} + ')'">Edit</button>
+<!--            <button th:onclick="'editLocation(' + ${location.id} + ')'">Edit</button>-->
             <form th:action="@{/admin/location/{id}/delete(id=${location.id})}" method="post" style="display: inline;">
                 <button type="submit">Delete</button>
             </form>
